@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broken Calculator - April Fools!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #171717;
+        }
+        .calculator {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .screen {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            font-size: 24px;
+            text-align: right;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            min-width: 230px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .button {
+            background-color: #555;
+            color: white;
+            font-size: 18px;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background-color: #777;
+        }
+        .button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div id="screen" class="screen">0</div>
+        <div class="buttons">
+            <div class="button" onclick="clickButton(1)">1</div>
+            <div class="button" onclick="clickButton(2)">2</div>
+            <div class="button" onclick="clickButton(3)">3</div>
+            <div class="button" onclick="clickButton(4)">4</div>
+            <div class="button" onclick="clickButton(5)">5</div>
+            <div class="button" onclick="clickButton(6)">6</div>
+            <div class="button" onclick="clickButton(7)">7</div>
+            <div class="button" onclick="clickButton(8)">8</div>
+            <div class="button" onclick="clickButton(9)">9</div>
+            <div class="button" onclick="clickButton(0)">0</div>
+            <div class="button" onclick="clickButton('Error')">Error</div>
+            <div class="button" onclick="clickButton('Try Again')">Try Again</div>
+        </div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+
+        function clickButton(value) {
+            clickCount++;
+            let screen = document.getElementById("screen");
+            
+            if (clickCount >= 10) {
+                setTimeout(() => {
+                    alert("Gotcha! It's April Fools' Day!");
+                    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";  // Rickroll link
+                }, 500);
+                return;
+            }
+            
+            if (value === 'Error') {
+                screen.innerText = 'Error: Something went wrong!';
+            } else if (value === 'Try Again') {
+                screen.innerText = 'Please try again...';
+            } else {
+                screen.innerText = Math.floor(Math.random() * 10000); // Random output
+            }
+        }
+    </script>
+</body>
+</html>
